@@ -1,19 +1,32 @@
 package com.example.restful_api_20200927.data
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
-class User(
-    @JsonProperty("email") val email: String,
-    @JsonProperty("password") val password: String
+data class User(
+    @SerializedName("email")
+    var email: String?,
+
+    @SerializedName("password")
+    var password: String?,
+
+    @SerializedName("id")
+    var id: Int? = 0,
+
+    @SerializedName("nick_name")
+    var nickName: String?,
+
+    @SerializedName("created_at")
+    var createdAt: String?,
+
+    @SerializedName("updated_at")
+    var updatedAt: String?,
+
+    @SerializedName("profile_images")
+    var profileImages: List<ProfileImage>?
 ) {
+    constructor() :
+            this(null, null, null, null, null, null, null)
 
-
-    @JsonProperty("nick_name")
-    lateinit var nickName: String
-
-    @JsonProperty("created_at")
-    lateinit var createdAt: String
-
-    @JsonProperty("updated_at")
-    lateinit var updatedAt: String
+    constructor(email: String, password: String, nickName: String) :
+            this(email, password, null, nickName, null, null, null)
 }
