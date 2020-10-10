@@ -1,6 +1,7 @@
 package com.example.restful_api_20200927
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import com.example.restful_api_20200927.data.User
@@ -29,6 +30,7 @@ class LoginActivity : BaseActivity() {
             val callBack = service.users()
 
             callBack.doAsync {
+
                 val response = callBack.execute()
                 Log.d("결과코드", response.body().toString())
             }
